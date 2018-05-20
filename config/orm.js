@@ -1,29 +1,39 @@
 
 const connection = require("./connection.js");
 
+const tableName = "burgers";
+
 const orm = {
-  selectALL: function(table) {
-    const queryString = "SELECT * FROM ??";
-    connection.query(queryString, [table], function(err, result) {
+
+  selectALL: function(callback) {
+    // Define query upfront to simplify connection code
+    const querySting = "SELECT * FROM " + tableName;
+
+    // Use imported connection object to connect to burgers_db query the entire table
+    // The call back ensures data is returned only after the query is finished
+    connection.query(queryString, function(err, result) {
       if (err) console.log(err);
-      console.log(result);
+      callback(result);
     });
   },
 
-  create: function(table, vals) {  
-    const queryString = "INSERT INTO ?? (burger_name, devoured) VALUES ?"
-    connection.query(queryString, [table, vals], function(err, result) {
+  // Create new burger and add to table
+  create: function(burger, callback) {  
+    const queryString = "INSERT INTO " + tableName + " (burger_name, devoured) VALUES (?,)"
+    connection.query(queryString, [burger.name, burger.devoured], function(err, result) {
       if (err) console.log(err);
-      console.log(result);
+      callback(result);
     });
   },
 
-  updateOne: function(table, vals, id) {
-    const queryString = "UPDATE ?? SET burger_name = ?, devoured = ? WHERE ?";
-    connection.query(queryString, [table, vals, id], function(err, result) {
+  //Update burger name - ?how can I allow someone to update either name or state?
+  updateOne: function(burger, callback) {
+    const queryString = "UPDATE " + tableName + " SET burger_name=? WHERE id=?";
+    connection.query(queryString, [burger.name, burger.id], function(err, result) {
         if (err) console.log(err);
-        console.log(result)
+        callback(result)
     });
-  };
+  },
+}
 
 module.exports = orm;
