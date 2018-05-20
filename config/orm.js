@@ -1,11 +1,10 @@
-
 const connection = require("./connection.js");
 
 const tableName = "burgers";
 
 const orm = {
 
-  selectALL: function(callback) {
+  selectAll: function(callback) {
     // Define query upfront to simplify connection code
     const querySting = "SELECT * FROM " + tableName;
 
