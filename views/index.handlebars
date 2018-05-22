@@ -32,18 +32,15 @@
 <script type="text/javascript">
  $("#create-burger").on("submit", function(event) {
     event.preventDefault();
-    alert('submi!')
     const newBurger = {
       name: $("#burger").val().trim()
     };
 
-    // Send the POST request.
     $.ajax("/api/burger", {
       type: "POST",
       data: newBurger
     }).then(
       function() {
-        console.log("added new burger");
         location.reload();
       }
     );
@@ -63,7 +60,6 @@
       data: burgerUpdate
     }).then(
       function() {
-        console.log("Burger devoured")
         location.reload();
       }
     )   

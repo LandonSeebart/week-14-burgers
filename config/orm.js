@@ -27,8 +27,6 @@ const orm = {
   },
 
   updateOne: function(burger, condition, callback) {
-    console.log("ORM")
-    console.log(burger, condition)
     const queryString = "UPDATE " + tableName + " SET devoured=? " + condition;
     
     connection.query(queryString, [burger.devoured], function(err, result) {

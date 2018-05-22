@@ -26,9 +26,7 @@ router.post("/api/burger", function(req, res) {
 
 
 router.put("/api/burger/:id", function(req, res) {
-  console.log("controller")
   const condition = "WHERE id=" + req.params.id;
-  console.log(condition)
   burger.update({
     devoured: req.body.devoured
   }, condition, function(result) {

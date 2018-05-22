@@ -25,8 +25,6 @@ const burger = {
   },
 
   update: function(burger, condition, callback) {
-    console.log("Model")
-    console.log(burger, condition)
     orm.updateOne(burger, condition, function(res) {
       callback(res);
     });
