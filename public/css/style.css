@@ -1,0 +1,26 @@
+body {
+  background-color: red;
+}
+
+li {
+  padding: 5px;
+  margin: 5px;
+  background: #f1b566;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-form {
+  padding: 5px;
+  margin: 5px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+button {
+  background-color: green;
+}
