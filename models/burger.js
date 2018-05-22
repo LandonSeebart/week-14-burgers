@@ -15,7 +15,7 @@ const burger = {
   },
 
   // Create takes two arguments: a burger object and a callback function
-  // The orm expects to receive values for burger_name and devoured - these are passed through
+  // The orm expects to receive values for burger_name.  This is passed through
   // with the object.  We also call the callback function received from the controller with the 
   // argument res so that the controller function can deal with whatever burger_db sends back.
   create: function(burger, callback) {

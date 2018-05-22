@@ -8,7 +8,7 @@ const burger = require("../models/burger.js");
 // or how to handle an error getting the data
 router.get("/", function(req, res) {
   burger.all(function(data) {
-    res.send(data);
+    res.render("index", {burgers: data});
   });
 });
 
@@ -19,12 +19,11 @@ router.get("/", function(req, res) {
 router.post("/api/burger", function(req, res) {
   burger.create ({
     name: req.body.name,
-    devoured: req.body.devoured
   }, function(result) {
-    //error case
-    //redirect to base;
+    res.json({ id: result.insertId });
   });
 });
+
 
 // router.put("/api/burger/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;

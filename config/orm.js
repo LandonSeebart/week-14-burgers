@@ -8,19 +8,19 @@ const orm = {
     // Define query upfront to simplify connection code
     const queryString = "SELECT * FROM " + tableName;
 
+
     // Use imported connection object to connect to burgers_db query the entire table
     // The call back ensures data is returned only after the query is finished
     connection.query(queryString, function(err, result) {
       if (err) console.log(err);
-      console.log(`orm: ${result}`)
       callback(result);
     });
   },
 
   // Create new burger and add to table
   create: function(burger, callback) {  
-    const queryString = "INSERT INTO " + tableName + " (burger_name, devoured) VALUES (?,)"
-    connection.query(queryString, [burger.name, burger.devoured], function(err, result) {
+    const queryString = "INSERT INTO " + tableName + " (burger_name) VALUES (?)"
+    connection.query(queryString, [burger.name], function(err, result) {
       if (err) console.log(err);
       callback(result);
     });
