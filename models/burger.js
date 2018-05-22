@@ -23,14 +23,15 @@ const burger = {
       callback(res);
     });
   },
-}
 
-//   update: function(objColVals, condition, cb) {
-//     orm.update("cats", objColVals, condition, function(res) {
-//       cb(res);
-//     });
-//   }
-// };
+  update: function(burger, condition, callback) {
+    console.log("Model")
+    console.log(burger, condition)
+    orm.updateOne(burger, condition, function(res) {
+      callback(res);
+    });
+  }
+};
 
 // Export the database functions for the controller (catsController.js).
 module.exports = burger;

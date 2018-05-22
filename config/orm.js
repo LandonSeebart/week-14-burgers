@@ -26,14 +26,16 @@ const orm = {
     });
   },
 
-  //Update burger name - ?how can I allow someone to update either name or state?
-//   updateOne: function(burger, callback) {
-//     const queryString = "UPDATE " + tableName + " SET burger_name=? WHERE id=?";
-//     connection.query(queryString, [burger.name, burger.id], function(err, result) {
-//         if (err) console.log(err);
-//         callback(result)
-//     });
-//   },
+  updateOne: function(burger, condition, callback) {
+    console.log("ORM")
+    console.log(burger, condition)
+    const queryString = "UPDATE " + tableName + " SET devoured=? " + condition;
+    
+    connection.query(queryString, [burger.devoured], function(err, result) {
+        if (err) console.log(err);
+        callback(result)
+    });
+  },
  }
 
 module.exports = orm;

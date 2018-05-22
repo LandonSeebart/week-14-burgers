@@ -49,11 +49,24 @@
     );
   });
 
-  $(".eat").on("click", function(event) {
+  $("#eat").on("click", function(event) {
     
     const id = $(this).data("id");
-    alert(`eat ${id}`)
-    
+    const eaten = $(this).data("eaten");
+
+    const burgerUpdate = {
+      devoured: eaten
+    };
+
+    $.ajax("/api/burger/" + id,{ 
+      type: "PUT",
+      data: burgerUpdate
+    }).then(
+      function() {
+        console.log("Burger devoured")
+        location.reload();
+      }
+    )   
   });
 
 </script>
